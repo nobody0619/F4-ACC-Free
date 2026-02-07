@@ -1,0 +1,6 @@
+﻿title,type,question,A,B,C,D,E,F,answer,image
+Mix,radio,Inventori Akhir 选哪个？,Harga Kos,Harga Pasaran,贵的,便宜的,,,D,
+,radio,拿货扣哪里？,Inventori Akhir,Belian,Jualan,Ambilan,,,B,
+,checkbox,Hutang Lapuk 怎么记录？,Akaun Belum Terima +,Akaun Belum Terima -,Hutang Lapuk +,Hutang Lapuk -,Bank +,Bank -,"B,C",
+,checkbox,Hutang Lapuk Terpulih 怎么记录？,Akaun Belum Terima +,Akaun Belum Terima -,Hutang Lapuk Terpulih +,Hutang Lapuk Terpulih -,Bank +,Bank -,"C,E",
+,checkbox,Angkutan Masuk tersilap catat sebagai Angkutan Keluar 怎么记录？,Angkutan Masuk +,Angkutan Masuk -,Angkutan Keluar +,Angkutan Keluar -,,,"A,D",

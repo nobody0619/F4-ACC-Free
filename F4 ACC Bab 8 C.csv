@@ -1,0 +1,17 @@
+﻿title,type,question,A,B,C,D,E,F,answer,image
+Peruntukan Hutang Ragu,radio,"Akaun Belum Terima = RM10000,
+Peruntukan Hutang Ragu = RM100, 
+Peruntukan Hutang Ragu = 5%
+需要怎么修改？",Peruntukan Hutang Ragu = 100+400,Peruntukan Hutang Ragu = 100+500,,,,,A,
+,radio,"Akaun Belum Terima = RM10000,
+Peruntukan Hutang Ragu = RM700, 
+Peruntukan Hutang Ragu = 5%
+需要怎么修改？",Peruntukan Hutang Ragu = 700-200,Peruntukan Hutang Ragu = 700-500,Peruntukan Hutang Ragu = 700+200,Peruntukan Hutang Ragu = 700+500,,,A,
+,radio,"Akaun Belum Terima = RM10000,
+Peruntukan Hutang Ragu = RM700, 
+Peruntukan Hutang Ragu = 5%
+需要怎么修改？",Belanja: Hutang Ragu RM200,Belanja: Hutang Ragu RM500,Belanja: Hutang Ragu RM700,Hasil: Hutang Ragu RM200,Hasil: Hutang Ragu RM500,Hasil: Hutang Ragu RM700,D,
+,radio,"Akaun Belum Terima = RM10000,
+Peruntukan Hutang Ragu = RM100, 
+Peruntukan Hutang Ragu = 5%
+需要怎么修改？",Belanja: Hutang Ragu RM100,Belanja: Hutang Ragu RM400,Belanja: Hutang Ragu RM500,Hasil: Hutang Ragu RM100,Hasil: Hutang Ragu RM400,Hasil: Hutang Ragu RM500,B,

@@ -1,0 +1,9 @@
+﻿title,type,question,A,B,C,D,E,answer,image
+Pengiktirafan Hasil dan Belanja,radio,Belanja Belum Bayar 进哪里?,Aset Semasa,Liabiliti Semasa,,,,B,
+,radio,Belanja Prabayar 进哪里?,Aset Semasa,Liabiliti Semasa,,,,A,
+,radio,Hasil Belum Terima 进哪里?,Aset Semasa,Liabiliti Semasa,,,,A,
+,radio,Hasil Belum Terperoleh 进哪里?,Aset Semasa,Liabiliti Semasa,,,,B,
+,radio,Hasil Belum Terperoleh 怎么修改？,+,-,,,,B,
+,radio,Hasil Belum Terima 怎么修改？,+,-,,,,A,
+,radio,Belanja Belum Bayar 怎么修改？,+,-,,,,A,
+,radio,Belanja Prabayar 怎么修改？,+,-,,,,B,

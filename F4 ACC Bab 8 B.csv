@@ -1,0 +1,7 @@
+﻿title,type,question,A,B,C,D,E,answer,image
+Susut Nilai,radio,Susut nilai 10% atas kos 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,A,
+,radio,Susut nilai 10% garis lurus 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,A,
+,radio,Susut nilai 10% ansuran tetap 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,A,
+,radio,Susut nilai 10% baki berkurangan 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,B,
+,radio,Susut nilai 10% nilai buku 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,B,
+,radio,Susut nilai 10% nilai skrap 怎么算?,Kos x 10%,(Kos - Susut Nilai Terkumpul) x 10%,(Kos - Nilai Skrap) ÷ Tahun,,,C,

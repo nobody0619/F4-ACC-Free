@@ -1,0 +1,46 @@
+﻿id,chapter,label,sheet
+v001,F4 ACC Bab 0 基础 Akaun Perdagangan 中文意思,Akaun Perdagangan 中文意思,F4 ACC Bab 7 Translate AP.csv
+v002,F4 ACC Bab 0 基础 Akaun Untung Rugi 中文意思,Akaun Untung Rugi 中文意思,F4 ACC Bab 7 Translate AUR.csv
+v003,F4 ACC Bab 0 基础 Penyata Kedudukan Kewangan 中文意思,Penyata Kedudukan Kewangan 中文意思,F4 ACC Bab 7 Translate PKK.csv
+v004,F4 ACC Bab 0 基础 Akaun Perdagangan,Akaun Perdagangan,F4 ACC Bab 7 AP.csv
+v005,F4 ACC Bab 0 基础 APUR,Akaun Perdagangan dan Untung Rugi,F4 ACC Bab 7 APUR.csv
+v006,F4 ACC Bab 0 基础 PKK,Penyata Kedudukan Kewangan,F4 ACC Bab 7 PKK.csv
+v007,F4 ACC Bab 0 基础 APUR PKK,Penyata Pendapatan,F4 ACC Bab 7 APUR PKK.csv
+v008,F4 ACC Bab 1 1.1 簿记会计,Simpan Kira vs Perakaunan,F4 ACC Bab 1 1.1 A.csv
+v009,F4 ACC Bab 1 1.1 会计循环,Kitaran Perakaunan,F4 ACC Bab 1 1.1 B.csv
+v010,F4 ACC Bab 1 1.1 会计分支,Subbidang Perakaunan,F4 ACC Bab 1 1.1 C.csv
+v011,F4 ACC Bab 1 1.1 会计师的领导特质,Ciri-ciri Kepimpinan Seorang Akauntan,F4 ACC Bab 1 1.1 D.csv
+v012,F4 ACC Bab 1 1.1 专业会计师的道德守则,Kod Etika Akauntan Profesional,F4 ACC Bab 1 1.1 E.csv
+v013,F4 ACC Bab 1 1.1 会计机构,Badan Perakaunan,F4 ACC Bab 1 1.1 F.csv
+v014,F4 ACC Bab 1 1.2 会计历史,Sejarah Perakaunan,F4 ACC Bab 1 1.2.csv
+v015,F4 ACC Bab 1 1.3 财务报表,Penyata Kewangan,F4 ACC Bab 1 1.3.csv
+v016,"F4 ACC Bab 1 1.4 会计假设,原则&限制","Andaian, Prinsip dan Batasan dalam Perakaunan",F4 ACC Bab 1 1.4.csv
+v017,F4 ACC Bab 1 1.5 企业实体,Entiti Perniagaan,F4 ACC Bab 1 1.5.csv
+v018,F4 ACC Bab 2 分类 Level 1,分类 Level 1,F4 ACC Bab 2 Level 0 A.csv
+v019,F4 ACC Bab 2 分类 Level 2,分类 Level 2,F4 ACC Bab 2 Level 0 B.csv
+v020,F4 ACC Bab 2 Level 1,Persamaan Perakaunan Level 1,F4 ACC Bab 2 Level 1.csv
+v021,F4 ACC Bab 2 Level 2,Persamaan Perakaunan Level 2,F4 ACC Bab 2 Level 2.csv
+v022,F4 ACC Bab 2 Level 3,Persamaan Perakaunan Level 3,F4 ACC Bab 2 Level 3.csv
+v023,F4 ACC Bab 2 Catatan Kontra dan Carta Akaun,Catatan Kontra dan Carta Akaun,F4 ACC Bab 2 2.4.csv
+v024,F4 ACC Bab 3 Level 1,Dokumen Bukan Sumber + Diskaun,F4 ACC Bab 3 A.csv
+v025,F4 ACC Bab 3 Level 2,Dokumen Sumber,F4 ACC Bab 3 B.csv
+v026,F4 ACC Bab 4 句子版,Buku Catatan Pertama Level 1,F4 ACC Bab 4 A.csv
+v027,F4 ACC Bab 4 Dokumen版 1,Buku Catatan Pertama Level 2,F4 ACC Bab 4 B.csv
+v028,F4 ACC Bab 4 Dokumen版 2,Buku Catatan Pertama Level 2,F4 ACC Bab 4 C.csv
+v029,F4 ACC Bab 4 Dokumen版 3,Buku Catatan Pertama Level 2,F4 ACC Bab 4 D.csv
+v030,F4 ACC Bab 5 5.1 Lejar,Lejar,F4 ACC Bab 5 5.1.csv
+v031,F4 ACC Bab 5 5.2 基础,Sistem Catatan Bergu,F4 ACC Bab 5 5.2 Level 1.csv
+v032,F4 ACC Bab 5 5.2 句子,Sistem Catatan Bergu,F4 ACC Bab 5 5.2 Level 2.csv
+v033,F4 ACC Bab 5 5.2 Dokumen版 1,Sistem Catatan Bergu,F4 ACC Bab 5 5.2 Level 3 A.csv
+v034,F4 ACC Bab 5 5.2 Dokumen版 2,Sistem Catatan Bergu,F4 ACC Bab 5 5.2 Level 3 B.csv
+v035,F4 ACC Bab 5 Kawalan 分类,Akaun Kawalan,F4 ACC Bab 5 Kawalan.csv
+v036,F4 ACC Bab 5 Kawalan Baki,Baki,F4 ACC Bab 5 Kawalan 2.csv
+v037,F4 ACC Bab 7 Akaun Perdagangan,Akaun Perdagangan,F4 ACC Bab 7 AP.csv
+v038,F4 ACC Bab 7 APUR,Akaun Perdagangan dan Untung Rugi,F4 ACC Bab 7 APUR.csv
+v039,F4 ACC Bab 7 PKK,Penyata Kedudukan Kewangan,F4 ACC Bab 7 PKK.csv
+v040,F4 ACC Bab 7 APUR PKK,Penyata Pendapatan,F4 ACC Bab 7 APUR PKK.csv
+v041,F4 ACC Bab 8 Pengiktirafan Hasil dan Belanja,Pengiktirafan Hasil dan Belanja,F4 ACC Bab 8 A.csv
+v042,F4 ACC Bab 8 Susut Nilai,Susut Nilai,F4 ACC Bab 8 B.csv
+v043,F4 ACC Bab 8 Peruntukan Hutang Ragu,Peruntukan Hutang Ragu,F4 ACC Bab 8 C.csv
+v044,F4 ACC Bab 8 Mix,Mix,F4 ACC Bab 8 D.csv
+v045,F4 ACC Bab 9 Kesilapan,Pembetulan Kesilapan,F4 ACC Bab 9.csv

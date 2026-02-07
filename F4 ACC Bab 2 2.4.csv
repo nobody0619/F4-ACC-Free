@@ -1,0 +1,13 @@
+﻿title,type,question,A,B,C,D,E,F,G,H,I,J,K,L,answer,image
+Catatan Kontra,text,Modal 的 Catatan Kontra 是,,,,,,,,,,,,,Ambilan,
+,text,Jualan 的 Catatan Kontra 是,,,,,,,,,,,,,"Pulangan Jualan,Pulangan Masuk",
+,text,Belian 的 Catatan Kontra 是,,,,,,,,,,,,,"Pulangan Belian,Pulangan Keluar",
+,text,Aset Bukan Semasa 的 Catatan Kontra 是,,,,,,,,,,,,,Susut Nilai Terkumpul,
+,text,Akaun Belum Terima 的 Catatan Kontra 是,,,,,,,,,,,,,Peruntukan Hutang Ragu,
+,text,Alatan Pejabat 的 Catatan Kontra 是,,,,,,,,,,,,,Susut Nilai Terkumpul Alatan Pejabat,
+,radio,Insurans 应该属于哪个kod?,1234,2048,3819,4516,,,,,,,,,C,carta_akaun.png
+,radio,Sewa diterima 应该属于哪个kod?,1025,2486,3159,4825,,,,,,,,,D,carta_akaun.png
+,radio,Pelaburan daripada Syarikat A 应该属于哪个kod?,1103,2943,3248,4167,,,,,,,,,B,carta_akaun.png
+,radio,Inventori 应该属于哪个kod?,1305,2348,3067,4395,,,,,,,,,A,carta_akaun.png
+,radio,Angkutan keluar 应该属于哪个kod?,1946,2016,3168,4026,,,,,,,,,C,carta_akaun.png
+,radio,Faedah simpanan 应该属于哪个kod?,1604,2426,3194,4352,,,,,,,,,D,carta_akaun.png

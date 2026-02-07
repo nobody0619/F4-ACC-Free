@@ -1,0 +1,12 @@
+﻿title,type,question,A,B,C,D,E,F,G,H,answer,image
+5.2 Sistem Catatan Bergu Level 2,checkbox,根据 Catatan Bergu 如何记录？,debit: Belian,kredit: Jualan,debit: Tunai,kredit: Tunai,debit: Cik Krisdanyati,kredit: Cik Krisdanyati,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"B,C",dokumen_1.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Belian,kredit: Jualan,debit: Tunai,kredit: Tunai,debit: Kelab Hoki Sharifah,kredit: Kelab Hoki Sharifah,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"B,E",dokumen_2.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Belian,kredit: Jualan,debit: Tunai,kredit: Tunai,debit: Perniagaan Sukan Ria,kredit: Perniagaan Sukan Ria,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"A,F",dokumen_3.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Sewa,kredit: Sewa diterima,debit: Bank,kredit: Bank,debit: Kedai Puncak Niaga,kredit: Kedai Puncak Niaga,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"B,C",dokumen_4.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Perabot,kredit: Perabot,debit: Tunai,kredit: Tunai,debit: Kedai Mini Canggih,kredit: Kedai Mini Canggih,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"B,E",dokumen_5.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Diskaun diberi,kredit: Diskaun diterima,debit: Bank,kredit: Bank,debit: Kelab Hoki Sharifah,kredit: Kelab Hoki Sharifah,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"A,C,F",dokumen_6.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Belian,kredit: Jualan,debit: Tunai,kredit: Tunai,debit: Kelab Seni Kebudayaan,kredit: Kelab Seni Kebudayaan,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"B,E",dokumen_7.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Tunai,kredit: Tunai,debit: Bank,kredit: Bank,debit: Kilang Kasut Bermutu,kredit: Kilang Kasut Bermutu,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"D,E",dokumen_8.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Tunai,kredit: Tunai,debit: Bank,kredit: Bank,debit: Perniagaan Sukan Ria,kredit: Perniagaan Sukan Ria,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"D,E",dokumen_9.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Pulangan Belian,kredit: Pulangan Belian,debit: Pulangan Jualan,kredit: Pulangan Jualan,debit: Kelab Seni Kebudayaan,kredit: Kelab Seni Kebudayaan,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"C,F",dokumen_10.png
+,checkbox,根据 Catatan Bergu 如何记录？,debit: Kadar Bayaran,kredit: Kadar Bayaran,debit: Tunai,kredit: Tunai,debit: Tenaga Nasional Berhad,kredit: Tenaga Nasional Berhad,debit: Kedai Kasut Fuzzy,kredit: Kedai Kasut Fuzzy,"A,D",dokumen_11.png

@@ -1,0 +1,6 @@
+﻿title,type,question,A,B,C,D,E,F,G,answer,image
+Penyata Kewangan,checkbox,哪些是 Ciri Kualitatif Asas?,Kerelevanan,Perwakilan benar,Kebolehbandingan,Kebolehsahan,Kebolehfahaman,Pemasaan,,"A,B",
+,checkbox,哪些是 Ciri Kualitatif Tertingkat?,Kerelevanan,Perwakilan benar,Kebolehbandingan,Kebolehsahan,Kebolehfahaman,Pemasaan,,"C,D,E,F",
+,radio,bebas daripada kesilapan material dan tiada unsur berat sebelah,Kerelevanan,Perwakilan benar,Kebolehbandingan,Kebolehsahan,Kebolehfahaman,Pemasaan,,B,
+,checkbox,哪些是 Pengguna Dalaman?,Pemilik perniagaan,Pihak pengurusan,Pekerja,Pihak bank,Pembekal,Agensi kerajaan,Pemegang saham,"A,B,C",
+,checkbox,哪些是 Pengguna Luaran?,Pemilik perniagaan,Pihak pengurusan,Pekerja,Pihak bank,Pembekal,Agensi kerajaan,Pemegang saham,"D,E,F,G",

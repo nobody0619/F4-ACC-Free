@@ -1,0 +1,13 @@
+﻿title,type,question,A,B,C,D,E,F,G,H,answer,image
+分类 Level 1,radio,Bank,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Overdraf bank,Aset,Liabiliti,Ekuiti Pemilik,,,,,,B,
+,radio,Tunai,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Kenderaan,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Lengkapan,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Akaun Belum Terima,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Inventori,Aset,Liabiliti,Ekuiti Pemilik,,,,,,A,
+,radio,Akaun Belum Bayar,Aset,Liabiliti,Ekuiti Pemilik,,,,,,B,
+,radio,Pinjaman,Aset,Liabiliti,Ekuiti Pemilik,,,,,,B,
+,radio,Modal,Aset,Liabiliti,Ekuiti Pemilik,,,,,,C,
+,radio,Untung Bersih,Aset,Liabiliti,Ekuiti Pemilik,,,,,,C,
+,radio,Ambilan,Aset,Liabiliti,Ekuiti Pemilik,,,,,,C,

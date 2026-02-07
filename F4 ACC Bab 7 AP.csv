@@ -1,0 +1,7 @@
+﻿title,type,question,A,B,C,D,E,F,answer,image
+Akaun Perdagangan,radio,Jualan - Pulangan Jualan =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,A,
+,radio,Belian - Pulangan Belian =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,C,
+,radio,Belian Bersih + Angkutan Masuk =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,D,
+,radio,Inventori awal + Kos Belian =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,E,
+,radio,Kos Barang untuk dijual - Inventori akhir =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,B,
+,radio,Jualan Bersih - Kos Jualan =,Jualan Bersih,Kos Jualan,Belian Bersih,Kos Belian,Kos Barang untuk dijual,Untung Kasar,F,
