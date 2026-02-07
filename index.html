@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>纪老师 F4 ACC 精英训练网</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width:900px; margin:auto; text-align:center; }
+    #welcome,#chapters,#quiz,#finish { margin:20px; }
+    #chapters,#quiz,#finish { display:none; }
+
+    .floating-back { position: sticky; top:10px; left:0; text-align:left; z-index:5; }
+    .floating-back button{
+      padding:10px 14px; border-radius:999px; border:0; background:#0aa; color:#fff; cursor:pointer;
+      box-shadow:0 6px 14px rgba(0,0,0,.12);
+    }
+
+    #chapters h2 { margin:10px 0 6px; }
+    .group { text-align:left; margin:18px 0; }
+    .group-title { font-weight:bold; font-size:18px; margin:8px 0; }
+    .item {
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      border:1px solid #e6e6e6; border-radius:12px; padding:10px 14px; margin:8px 0; background:#fff;
+    }
+    .item .title { text-align:left; }
+    .meta { color:#666; font-size:12px; margin-top:4px; }
+    .go {
+      padding:8px 12px; border-radius:10px; border:1px solid #333;
+      background:#000; color:#fff; cursor:pointer;
+    }
+
+    #topbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+    #topbar .left { display:flex; align-items:center; gap:8px; }
+    progress { width:100%; height:18px; }
+    .question { text-align:left; margin:15px 0; padding-left:6px; }
+    .option-label { display:block; margin:6px 0; cursor:pointer; }
+    .feedback { font-weight:bold; margin:12px 0; }
+    input[type="text"] { width:100%; padding:6px; margin:6px 0; }
+    input[type="radio"],input[type="checkbox"] { transform:scale(1.2); margin-right:8px; }
+    img { max-width:100%; margin:10px 0; border:2px solid #ccc; }
+    #submit-status { margin-top:10px; font-size:14px; }
+  </style>
+</head>
+<body>
+
+  <!-- 1) 欢迎页 -->
+  <div id="welcome">
+    <h2 id="welcomeTitle"></h2>
+    <input type="text" id="username" placeholder="姓名 / Name"/>
+    <button id="startBtn" type="button">开始 / Start</button>
+
+    <!-- 锁定模式提示 -->
+    <div id="lockedHint" style="display:none;margin-top:10px;color:#666;font-size:13px;">
+      这是指定练习链接（无法切换到其他章节）。
+    </div>
+  </div>
+
+  <!-- 2) 章节页 -->
+  <div id="chapters">
+    <div class="floating-back" id="backBarChapters">
+      <button type="button" id="btnHomeFromChapters">🏠 回到章节选择</button>
+    </div>
+    <h2>请选择章节 / Select Chapter</h2>
+    <div id="chapterWrap"></div>
+  </div>
+
+  <!-- 3) 测验页 -->
+  <div id="quiz">
+    <div class="floating-back" id="backBarQuiz">
+      <button type="button" id="backToListTop">🏠 回到章节选择</button>
+    </div>
+    <div id="topbar">
+      <div class="left"><span id="quiz-title" style="font-weight:bold;"></span></div>
+      <div class="right">
+        <span id="score">得分: 0</span>
+        <span id="remaining" style="margin-left:10px;">剩余题目: 0</span>
+      </div>
+    </div>
+    <progress id="progress" value="0" max="0"></progress>
+    <div id="question-area"></div>
+  </div>
+
+  <!-- 4) 完成页 -->
+  <div id="finish">
+    <div class="floating-back" id="backBarFinish">
+      <button type="button" id="backFromFinish">🏠 回到章节选择</button>
+    </div>
+    <h3 id="finish-msg"></h3>
+    <p id="stats"></p>
+    <p id="submit-status"></p>
+    <div id="controls"></div>
+  </div>
+
+  <!-- 成绩上传：隐藏表单（兜底提交） -->
+  <iframe name="postFrame" style="display:none;"></iframe>
+  <form id="postForm"
+        action="https://script.google.com/macros/s/AKfycbwOadAK74XfAiOFkokD6zlQ8kQZTFDI0_SVWwMSSRgT8mwuoCac2VSAIj8X07L7NVVF/exec"
+        method="post" target="postFrame" style="display:none;">
+    <input name="book"/>
+    <input name="quizId"/><input name="name"/><input name="score"/>
+    <input name="correct"/><input name="wrong"/><input name="time"/>
+  </form>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('welcomeTitle').textContent = document.title;
+
+  // ====== 新增：锁定模式（一个链接只能做一个练习）======
+  const params = new URLSearchParams(location.search);
+  const SET_ID = (params.get('set') || '').trim();   // 例如：?set=v001
+  const IS_LOCKED = !!SET_ID;
+
+  if (IS_LOCKED) {
+    document.getElementById('lockedHint').style.display = 'block';
+    // 隐藏所有“回到章节选择”的按钮（锁定链接不给切换）
+    document.getElementById('backBarChapters').style.display = 'none';
+    document.getElementById('backBarQuiz').style.display = 'none';
+    document.getElementById('backBarFinish').style.display = 'none';
+  }
+
+  let user = '';
+  let rows = [];
+  let idKey, chapterKey, labelKey, sheetKey;
+
+  let groups = new Map();
+  let groupOrder = [];
+
+  let currentRow = null;
+
+  let qs = [], queue = [], score = 0, correct = 0, wrong = 0;
+  let chapterStart = 0;
+  const MAX_OPTS = 15;
+
+  const countCache = new Map();
+  const SCRIPT_URL = document.getElementById('postForm').action;
+
+  // 开始按钮：欢迎页 -> (锁定模式：直接进指定练习) / (普通模式：章节列表)
+  document.getElementById('startBtn').onclick = () => {
+    const nm = document.getElementById('username').value.trim();
+    if (!nm) return alert('请输入姓名');
+    user = nm;
+    document.getElementById('welcome').style.display = 'none';
+    loadChapters();
+  };
+
+  // 普通模式按钮（锁定模式下已隐藏，不会用到）
+  document.getElementById('backToListTop').onclick = showChapterList;
+  document.getElementById('btnHomeFromChapters').onclick = showChapterList;
+  document.getElementById('backFromFinish').onclick = () => {
+    document.getElementById('finish').style.display = 'none';
+    showChapterList();
+  };
+
+  function loadChapters() {
+    Papa.parse('Chapters.csv', {
+      download:true, header:true, skipEmptyLines:true,
+      complete(res) {
+        rows = res.data.map(raw => {
+          const r={}; Object.entries(raw).forEach(([k,v])=>r[k.trim()]=v?.toString()?.trim() ?? v);
+          return r;
+        });
+        if (!rows.length) return alert('请检查 Chapters.csv');
+
+        const keys = Object.keys(rows[0]).map(k=>k.trim());
+        idKey      = keys.find(k=>k.toLowerCase()==='id');      // 新增：id
+        chapterKey = keys.find(k=>k.toLowerCase()==='chapter');
+        labelKey   = keys.find(k=>k.toLowerCase()==='label');
+        sheetKey   = keys.find(k=>k.toLowerCase()==='sheet');
+
+        if (!chapterKey || !labelKey || !sheetKey) {
+          return alert('Chapters.csv 需要列: chapter, label, sheet（建议加 id）');
+        }
+
+        // ====== 锁定模式：直接匹配一行并开始 ======
+        if (IS_LOCKED) {
+          const row = findRowBySetId(SET_ID);
+          if (!row) {
+            document.getElementById('welcome').style.display = 'block';
+            return alert('找不到这个 set：' + SET_ID + '（请检查 Chapters.csv 的 id 列或链接参数）');
+          }
+          startQuiz(row, /*locked=*/true);
+          return;
+        }
+
+        // ====== 普通模式：章节列表 ======
+        buildGroupsByCsvOrder(rows);
+        showChapterList();
+      },
+      error(){
+        alert('Chapters.csv 加载失败，请确认文件存在于同目录，或路径正确。');
+      }
+    });
+  }
+
+  // 锁定模式：优先用 id 精确匹配；如果你没加 id，则回退用 chapter 或 label 匹配
+  function findRowBySetId(setId){
+    const s = String(setId).trim();
+    if (!s) return null;
+
+    // 1) id 精确匹配（强烈建议）
+    if (idKey) {
+      const hit = rows.find(r => String(r[idKey]||'').trim() === s);
+      if (hit) return hit;
+    }
+
+    // 2) 回退：chapter 或 label 精确匹配
+    const byChapter = rows.find(r => String(r[chapterKey]||'').trim() === s);
+    if (byChapter) return byChapter;
+
+    const byLabel = rows.find(r => String(r[labelKey]||'').trim() === s);
+    if (byLabel) return byLabel;
+
+    // 3) 回退：chapter 包含（容错）
+    const byContains = rows.find(r => String(r[chapterKey]||'').includes(s));
+    return byContains || null;
+  }
+
+  function getMainChapterNo(chapterStr){
+    if (!chapterStr) return null;
+    const m = String(chapterStr).match(/(?:^|\s)(?:Chp|Bab)\s*([0-9]+)/i);
+    return m ? parseInt(m[1],10) : null;
+  }
+
+  function buildGroupsByCsvOrder(list){
+    groups = new Map();
+    groupOrder = [];
+    const OTHERS = 'OTHERS';
+
+    for (const r of list){
+      const no = getMainChapterNo(r[chapterKey]);
+      const key = (no === null ? OTHERS : no);
+
+      if (!groups.has(key)) {
+        groups.set(key, []);
+        if (key !== OTHERS) groupOrder.push(key);
+      }
+      groups.get(key).push(r);
+    }
+
+    const ordered = new Map();
+    for (const k of groupOrder) ordered.set(k, groups.get(k));
+    if (groups.has(OTHERS)) ordered.set(OTHERS, groups.get(OTHERS));
+    groups = ordered;
+  }
+
+  function showChapterList(){
+    if (IS_LOCKED) return; // 锁定链接不允许显示章节列表
+
+    document.getElementById('quiz').style.display = 'none';
+    document.getElementById('finish').style.display = 'none';
+
+    const wrap = document.getElementById('chapterWrap');
+    wrap.innerHTML = '';
+
+    groups.forEach((arr, key) => {
+      const g = document.createElement('div'); g.className = 'group';
+
+      const title = document.createElement('div'); title.className = 'group-title';
+      title.textContent = (key === 'OTHERS') ? '其他 Others' : `Chp/Bab ${key}`;
+      g.appendChild(title);
+
+      arr.forEach(row => {
+        const item = document.createElement('div'); item.className = 'item';
+
+        const left = document.createElement('div'); left.className = 'title';
+        const t = document.createElement('div'); t.style.fontWeight = 'bold';
+        t.textContent = `${row[chapterKey]} ${row[labelKey] ? '— ' + row[labelKey] : ''}`;
+
+        const meta = document.createElement('div'); meta.className = 'meta';
+        meta.textContent = '题数：加载中…';
+        left.appendChild(t); left.appendChild(meta);
+
+        const go = document.createElement('button'); go.className = 'go'; go.textContent = '开始';
+        go.onclick = () => startQuiz(row);
+
+        item.append(left, go); g.appendChild(item);
+
+        const sheet = row[sheetKey];
+        if (countCache.has(sheet)) {
+          meta.textContent = `题数：${countCache.get(sheet)}`;
+        } else {
+          Papa.parse(sheet, {
+            download:true, header:true, skipEmptyLines:true,
+            complete(r2){
+              const cnt = r2.data.filter(q => q.question && String(q.question).trim()).length;
+              countCache.set(sheet, cnt);
+              meta.textContent = `题数：${cnt}`;
+            },
+            error(){ meta.textContent = '题数：获取失败'; }
+          });
+        }
+      });
+
+      wrap.appendChild(g);
+    });
+
+    document.getElementById('chapters').style.display = 'block';
+  }
+
+  function startQuiz(row, locked=false){
+    currentRow = row;
+
+    // 普通模式：隐藏章节页；锁定模式：不显示章节页
+    document.getElementById('chapters').style.display = 'none';
+
+    document.getElementById('quiz-title').textContent =
+      `${row[chapterKey]}${row[labelKey] ? ' — ' + row[labelKey] : ''}`;
+
+    score = correct = wrong = 0;
+    chapterStart = Date.now();
+
+    Papa.parse(row[sheetKey], {
+      download:true, header:true, skipEmptyLines:true,
+      complete(res){
+        qs = res.data.map(q => ({...q, attempt:0}));
+        queue = shuffle(qs.filter(q => q.question && String(q.question).trim()));
+        document.getElementById('quiz').style.display = 'block';
+        updateUI(0);
+        nextQ();
+      },
+      error(){
+        alert('这个章节的题目加载失败了，请检查表格链接/CSV 文件。');
+        if (!locked) showChapterList();
+        else location.reload();
+      }
+    });
+  }
+
+  function updateUI(delta){
+    document.getElementById('score').textContent =
+      `得分: ${score} ${delta ? '(' + (delta>0?'+':'') + delta + ')' : ''}`;
+    document.getElementById('remaining').textContent = `剩余题目: ${queue.length}`;
+    const pg = document.getElementById('progress');
+    pg.max = qs.length; pg.value = qs.length - queue.length;
+  }
+
+  function nextQ(){
+    const qa = document.getElementById('question-area');
+    qa.innerHTML = ''; updateUI(0);
+    if (queue.length === 0) return finishQuiz();
+
+    const q = queue.shift();
+    const div = document.createElement('div'); div.className = 'question';
+    div.innerHTML = `<p><strong>${(q.question||'').replace(/\r?\n/g,'<br/>')}</strong></p>`;
+
+    if (q.image){
+      const img = document.createElement('img');
+      img.src = String(q.image).replace(/\s*\//g,'/').trim();
+      div.appendChild(img);
+    }
+
+    const opts = document.createElement('div'); opts.className = 'options';
+    if (q.type === 'text'){
+      opts.innerHTML = '<input type="text" id="txtAns" placeholder="请输入答案…"/>';
+    } else {
+      const letters = Array.from({length:MAX_OPTS}, (_,i)=>String.fromCharCode(65+i));
+      shuffle(letters.filter(l=>q[l])).forEach(l=>{
+        const inp = document.createElement('input');
+        inp.type = (q.type==='checkbox'?'checkbox':'radio');
+        inp.name='opt'; inp.value=l; inp.id='opt_'+l;
+        const lbl=document.createElement('label'); lbl.className='option-label'; lbl.htmlFor='opt_'+l;
+        lbl.appendChild(inp); lbl.append(' '+q[l]); opts.appendChild(lbl);
+      });
+    }
+    div.appendChild(opts);
+
+    const fb = document.createElement('div'); fb.className='feedback'; div.appendChild(fb);
+
+    const sb = document.createElement('button'); sb.textContent='提交';
+    sb.onclick = () => {
+      let ua=[];
+      if (q.type==='text'){
+        ua = document.getElementById('txtAns').value
+               .split(',')
+               .map(s=>s.trim())
+               .filter(Boolean);
+      } else {
+        ua = Array.from(div.querySelectorAll('input[name="opt"]:checked'))
+               .map(i=>i.value);
+      }
+      if (!ua.length) return alert('请选择或输入答案');
+
+      let isC=false;
+      if (q.type==='text'){
+        const lows = ua.map(s=>s.toLowerCase());
+        const ansList = String(q.answer||'')
+                          .split(',')
+                          .map(s=>s.trim().toLowerCase())
+                          .filter(Boolean);
+        isC = lows.some(v=>ansList.includes(v));
+      } else if (q.type === 'checkbox') {
+        const uaA = ua.map(s=>s.toUpperCase()).sort().join(',');
+        const caA = String(q.answer||'')
+                      .split(',')
+                      .map(s=>s.trim().toUpperCase())
+                      .filter(Boolean)
+                      .sort()
+                      .join(',');
+        isC = uaA === caA;
+      } else {
+        const accept = String(q.answer||'')
+                         .split(',')
+                         .map(s=>s.trim().toUpperCase())
+                         .filter(Boolean);
+        isC = ua.length === 1 && accept.includes(ua[0].toUpperCase());
+      }
+
+      const allAnsHtml = (() => {
+        if (q.type === 'text') {
+          return String(q.answer||'')
+                   .split(',')
+                   .map(s=>s.trim())
+                   .filter(Boolean)
+                   .map((s,i)=>`${i+1}. ${s}`)
+                   .join('<br>');
+        }
+        return String(q.answer||'')
+                 .split(',')
+                 .map(s=>s.trim().toUpperCase())
+                 .filter(Boolean)
+                 .map(letter => q[letter] || letter)
+                 .join('<br>');
+      })();
+
+      const delta = isC ? (q.attempt?1:2) : (q.attempt?-2:-1);
+      score += delta; if (isC) correct++; else wrong++;
+
+      const explainLine = q.explain
+        ? `<br><span style="font-weight:normal">${String(q.explain)}</span>` : '';
+
+      fb.innerHTML = isC
+        ? `正确! +${delta}<br>正确答案：<br>${allAnsHtml}${explainLine}`
+        : `错误! ${delta}<br>正确答案：<br>${allAnsHtml}${explainLine}`;
+
+      updateUI(delta);
+      sb.disabled = true;
+      const nb = document.createElement('button'); nb.textContent = '下一题'; nb.onclick = nextQ;
+      div.appendChild(nb);
+
+      if (!isC){
+        q.attempt++;
+        for (let i=0;i<2;i++){
+          queue.splice(Math.floor(Math.random()*(queue.length+1)),0,{...q});
+        }
+      }
+    };
+    div.appendChild(sb);
+
+    document.getElementById('question-area').appendChild(div);
+  }
+
+  async function finishQuiz(){
+    document.getElementById('quiz').style.display='none';
+    document.getElementById('finish').style.display='block';
+    document.getElementById('finish-msg').textContent = `恭喜 ${user}，你学会这个章节了！`;
+    document.getElementById('stats').textContent =
+      `得分: ${score}，答对 ${correct} 题，答错 ${wrong} 题`;
+    document.getElementById('submit-status').textContent = '正在上传成绩…';
+
+    const m = document.title.match(/(F\d+\s+(?:SC|ACC))/i);
+    const book = m ? m[1].toUpperCase() : 'DEFAULT';
+
+    const payload = {
+      book: book,
+      quizId: currentRow[chapterKey],
+      name: user,
+      score: score,
+      correct: correct,
+      wrong: wrong,
+      time: Math.floor((Date.now()-chapterStart)/1000)
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: new URLSearchParams(payload)
+      });
+      if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+      document.getElementById('submit-status').textContent = '✅ 成绩已上传';
+    } catch (e) {
+      const form = document.getElementById('postForm');
+      form.book.value    = payload.book;
+      form.quizId.value  = payload.quizId;
+      form.name.value    = payload.name;
+      form.score.value   = payload.score;
+      form.correct.value = payload.correct;
+      form.wrong.value   = payload.wrong;
+      form.time.value    = payload.time;
+      form.submit();
+      document.getElementById('submit-status').textContent =
+        '⚠️ 成绩可能没有上传成功，请老师检查表格链接/权限';
+      console.error('Score upload failed:', e);
+    }
+
+    const ctrl=document.getElementById('controls');
+    ctrl.innerHTML='';
+
+    // 锁定模式：不给“返回章节选择”，只给“再做一次”
+    if (IS_LOCKED) {
+      const again=document.createElement('button');
+      again.textContent='再做一次';
+      again.onclick=()=>location.reload();
+      ctrl.appendChild(again);
+      return;
+    }
+
+    // 普通模式：保留返回章节
+    const back=document.createElement('button');
+    back.textContent='返回章节选择';
+    back.onclick=()=>{ document.getElementById('finish').style.display='none'; showChapterList(); };
+    ctrl.appendChild(back);
+  }
+
+  function shuffle(a){
+    for(let i=a.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [a[i],a[j]]=[a[j],a[i]];
+    }
+    return a;
+  }
+});
+</script>
+</body>
+</html>
