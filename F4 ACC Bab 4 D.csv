@@ -1,14 +1,14 @@
-﻿title,type,question,A,B,C,D,E,F,answer,image
-Dokumen 版,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,B,dokumen_24.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_25.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,C,dokumen_26.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,B,dokumen_27.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,E,dokumen_28.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,B,dokumen_29.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_30.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_31.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_32.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_33.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_34.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,A,dokumen_35.png
-,radio,以下dokumen记录在哪里？,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,F,dokumen_36.png
+﻿title,type,question,A,B,C,D,E,F,G,answer,image
+BCP,checkbox,Jurnal Khas 包含,Jurnal Am,Jurnal Belian,Jurnal Jualan,Jurnal Pulangan Belian,Jurnal Pulangan Jualan,Buku Tunai,Buku Tunai Runcit,"B,C,D,E",
+,radio,Jurnal Belian 最后一天的 Butir 写什么?,Akaun Belian (dt),Akaun Belian (kt),Akaun Jurnal Belian (dt),Akaun Jurnal Belian (kt),,,,A,
+,radio,Jurnal Jualan 最后一天的 Butir 写什么?,Akaun Jualan (dt),Akaun Jualan (kt),Akaun Jurnal Jualan (dt),Akaun Jurnal Jualan (kt),,,,A,
+,radio,Jurnal Pulangan Belian 最后一天的 Butir 写什么?,Akaun Pulangan Belian (dt),Akaun Pulangan Belian (kt),Akaun Jurnal Pulangan Belian (dt),Akaun Jurnal Pulangan Belian (kt),,,,B,
+,radio,Jurnal Pulangan Jualan 最后一天的 Butir 写什么?,Akaun Pulangan Jualan (dt),Akaun Pulangan Jualan (kt),Akaun Jurnal Pulangan Jualan (dt),Akaun Jurnal Pulangan Jualan (kt),,,,A,
+,radio,Jurnal Am 1号如果是新开的公司写什么？,Memulakan Perniagaan,"Aset, Liabiliti dan Modal pada tarikh ini",,,,,,A,
+,radio,Jurnal Am 1号如果是旧的公司写什么？,Memulakan Perniagaan,"Aset, Liabiliti dan Modal pada tarikh ini",,,,,,B,
+,radio,月头的Baki是,Baki b/b,Baki h/b,,,,,,A,
+,radio,月尾的Baki是,Baki b/b,Baki h/b,,,,,,B,
+,radio,Buku Tunai 1号的 Tunai & Bank 写在,debit,kredit,,,,,,A,
+,radio,Buku Tunai 1号的 Overdraf Bank 写在,debit,kredit,,,,,,B,
+,radio,Buku Tunai 1号如果是新开的公司写什么？,Baki b/b,Modal,,,,,,B,
+,radio,Buku Tunai 1号如果是旧的公司写什么？,Baki b/b,Modal,,,,,,A,
